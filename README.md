@@ -76,20 +76,59 @@
 <img width="991" alt="image" src="https://github.com/leoimewore/DockerizedApp/assets/95531716/ef27d817-e541-45cf-9517-c651e8e59265">
 
 
-- This shows that your tomcat server is running and the war file of the java app has been deployed on tomcat.
+- This shows that your Tomcat server is running and the war file of the Java app has been deployed on Tomcat.
 
 
-## We dont want the java app to be accessed through TOMCAT so i wont be exposing the tomcat port in the docker compose file ( We will access through a proxy server)
-
-
-
-
-## In the docker-project directory create a docker-compose yaml file to create three services: proxy_web, app(tomcat) an
+- We don't want the Java app to be accessed through TOMCAT so I won't be exposing the Tomcat port in the docker-compose file ( We will access through a proxy server)
 
 
 
 
-d db(database)
+## In the docker-project directory create a docker-compose yaml file to create three services: proxy_web, app(tomcat), and DB(database)
+
+
+
+```
+version: "3.8"
+
+services:
+  proxy-web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+
+    volumes:
+      - ./proxyConf:/etc/nginx/conf.d
+    
+
+  app:
+    build: ./java-login-app
+    hostname: tomcat
+
+    volumes:
+      - tomcat:/usr/local/tomcat/webapps
+
+  db: 
+    image: mysql:8.1.0-oracle
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=Admin123
+      - MYSQL_DATABASE=UserDB
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD:=Admin123
+
+  
+volumes:
+  nginx_data:
+  mysql-data:
+  tomcat:
+
+```
 
 
 
