@@ -193,9 +193,31 @@ volumes:
 
 
 
-  ## Next step is to verify that the sql data base is functioning
+  ## The Next step is to verify that the SQL database is functioning
 
   <img width="1004" alt="image" src="https://github.com/leoimewore/DockerizedApp/assets/95531716/3840f78d-7592-42bf-8cc1-ff8393e6182c">
+
+  - Inside the java source file ensure that the application.properties file is configured with mysql URL, USERNAME, AND PASSWORD before building with Maven
+    <img width="751" alt="image" src="https://github.com/leoimewore/DockerizedApp/assets/95531716/b6a366e0-8b4a-44da-98f3-85fafd1cd47b">
+
+  The next step is to get the IP address of the mysql container
+    ```
+    docker inspect <containerID> | grep Gateway
+    ```
+
+  - next access the database container:
+    ```
+      docker-compose exec db /bin/bash
+      mysql -h <GatewayIP>  -P 3306 -u <USERNAME> -p
+    ```
+
+    <img width="376" alt="image" src="https://github.com/leoimewore/DockerizedApp/assets/95531716/00efe674-6a9a-4d9f-8a62-7162e4ae2ca2">
+
+
+    ## Follow Directions given in the READ ME FILE of the Project and Create a new user on the UI.
+
+    
+
 
 
 
