@@ -176,9 +176,25 @@ volumes:
     #location ~ /\.ht {
     #    deny  all;
     #}
-}
+   }
 
   ```
+
+
+
+
+  - docker ps shows the running containers
+    <img width="1115" alt="image" src="https://github.com/leoimewore/DockerizedApp/assets/95531716/98a8e948-953c-4d1b-a8a4-97efcf14530f">
+
+
+  - localhost://80   the java app is now accessible through the nginx(proxy_web) port 80
+    <img width="551" alt="image" src="https://github.com/leoimewore/DockerizedApp/assets/95531716/73778b44-ab07-4486-b17e-614f16ec619f">
+
+
+
+
+
+
 
 
 
