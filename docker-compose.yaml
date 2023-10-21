@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  proxy-web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+
+    volumes:
+      - ./proxyConf:/etc/nginx/conf.d
+    
+
+  app:
+    build: ./java-login-app
+    hostname: tomcat
+
+    volumes:
+      - tomcat:/usr/local/tomcat/webapps
+
+  db: 
+    image: mysql:8.1.0-oracle
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${USERNAME}
+      - MYSQL_PASSWORD=${PASSWORD}
+
+  
+volumes:
+  nginx_data:
+  mysql-data:
+  tomcat:
