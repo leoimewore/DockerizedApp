@@ -193,6 +193,14 @@ volumes:
 
 
 
+  ## Next step is to verify that the sql data base is functioning
+
+  <img width="1004" alt="image" src="https://github.com/leoimewore/DockerizedApp/assets/95531716/3840f78d-7592-42bf-8cc1-ff8393e6182c">
+
+
+
+
+
 
 
 
